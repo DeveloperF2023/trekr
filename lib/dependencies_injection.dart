@@ -10,6 +10,7 @@ import 'package:trekr/features/domain/use_cases/search/search_posts_and_users_us
 import 'package:trekr/features/presentation/cubit/messages/get_messages/get_messages_cubit.dart';
 import 'package:trekr/features/presentation/cubit/messages/websocket/websocket_cubit.dart';
 import 'package:trekr/features/presentation/cubit/posts/get_posts/get_posts_cubit.dart';
+import 'package:trekr/features/presentation/cubit/posts/reaction_post/reaction_post_cubit.dart';
 import 'package:trekr/features/presentation/cubit/search/search/search_posts_users_cubit.dart';
 
 import 'features/data/data_sources/remote/remote_data_source.dart';
@@ -22,6 +23,11 @@ import 'features/domain/use_cases/auth/is_sign_in_use_case.dart';
 import 'features/domain/use_cases/auth/login_user_use_case.dart';
 import 'features/domain/use_cases/auth/register_user_use_case.dart';
 import 'features/domain/use_cases/auth/reset_password_use_case.dart';
+import 'features/domain/use_cases/comment/create_comment_use_case.dart';
+import 'features/domain/use_cases/comment/fetch_comment_by_post_id_use_case.dart';
+import 'features/domain/use_cases/reaction-post/react_post_use_case.dart';
+import 'features/presentation/cubit/comment/create_comment/create_comment_cubit.dart';
+import 'features/presentation/cubit/comment/get_comment_by_post_id/get_comment_by_post_id_cubit.dart';
 import 'features/presentation/cubit/user/auth/auth_cubit.dart';
 import 'features/presentation/cubit/user/create_new_password/create_new_password_cubit.dart';
 import 'features/presentation/cubit/user/credential/credential_cubit.dart';
@@ -58,6 +64,15 @@ Future<void> setupLocator() async {
   locator.registerFactory(() => SearchPostsUsersCubit(
         searchPostsAndUsersUseCase: locator.call(),
       ));
+  locator.registerFactory(() => GetCommentByPostIdCubit(
+        fetchCommentsByPostIdUseCase: locator.call(),
+      ));
+  locator.registerFactory(() => CreateCommentCubit(
+        createCommentUseCase: locator.call(),
+      ));
+  locator.registerFactory(() => ReactionPostCubit(
+        reactPostUseCase: locator.call(),
+      ));
 
   ///Use Case
   locator.registerLazySingleton(
@@ -82,6 +97,12 @@ Future<void> setupLocator() async {
       () => CreateMessageUseCase(repository: locator.call()));
   locator.registerLazySingleton(
       () => SearchPostsAndUsersUseCase(repository: locator.call()));
+  locator.registerLazySingleton(
+      () => FetchCommentsByPostIdUseCase(repository: locator.call()));
+  locator.registerLazySingleton(
+      () => CreateCommentUseCase(repository: locator.call()));
+  locator.registerLazySingleton(
+      () => ReactPostUseCase(repository: locator.call()));
 
   ///Repository
   locator.registerLazySingleton<Repository>(

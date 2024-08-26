@@ -6,6 +6,7 @@ import 'package:trekr/features/presentation/pages/forget_password/create_new_pas
 import 'package:trekr/features/presentation/pages/forget_password/forget_password_screen.dart';
 import 'package:trekr/features/presentation/pages/forget_password/success_creation_password_screen.dart';
 import 'package:trekr/features/presentation/pages/forget_password/verify_code_screen.dart';
+import 'package:trekr/features/presentation/pages/global/add_post/add_post_screen.dart';
 import 'package:trekr/features/presentation/pages/global/feed/feed_screen.dart';
 import 'package:trekr/features/presentation/pages/global/join_community/join_community_screen.dart';
 import 'package:trekr/features/presentation/pages/global/main/main_screen.dart';
@@ -111,6 +112,10 @@ class OnGenerateRoute {
       case NavigationStrings.successOperation:
         {
           return routeBuilder(const SuccessSendReportScreen());
+        }
+      case NavigationStrings.addPost:
+        {
+          return routeBuilder(const AddPostScreen());
         }
       case NavigationStrings.discover:
         return routeBuilder(const FeedScreen());

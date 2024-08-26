@@ -22,6 +22,7 @@ class NavigationStrings {
   static const main = "main";
   static const learnMore = "learnMore";
   static const successOperation = "successOperation";
+  static const addPost = "addPost";
   static const String discover = "discover";
   static const String message = "message";
   static const String planTrip = "planTrip";

@@ -1,17 +1,11 @@
 part of 'widgets_imports.dart';
 
 class FeedItem extends StatelessWidget {
-  final bool? isGradient;
-  final String? content;
-  final bool? isImage;
-  final String? imageUrl; // Added imageUrl parameter
+  final bool? isGradient; // Added imageUrl parameter
 
   const FeedItem({
     super.key,
     this.isGradient = true,
-    this.content,
-    this.isImage,
-    this.imageUrl,
   });
 
   @override
@@ -19,9 +13,7 @@ class FeedItem extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          height: isImage == true
-              ? HelperFunctions.screenHeight(context) * .4.h
-              : HelperFunctions.screenHeight(context) * .13.h,
+          height: HelperFunctions.screenHeight(context) * .4.h,
           width: HelperFunctions.screenWidth(context),
         ),
         Positioned(
@@ -78,25 +70,16 @@ class FeedItem extends StatelessWidget {
           right: 20.w,
           child: Stack(
             children: [
-              isImage == true
-                  ? Container(
-                      height: HelperFunctions.screenHeight(context) * .27.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.r),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              "http://213.130.144.203:8084/files/$imageUrl"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    )
-                  : Text(
-                      content!,
-                      style: GoogleFonts.poppins(
-                        fontSize: 14.sp,
-                        color: Colors.black,
-                      ),
-                    ),
+              Container(
+                height: HelperFunctions.screenHeight(context) * .27.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.r),
+                  image: DecorationImage(
+                    image: AssetImage(AppAssets.nature),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
               Positioned(
                 bottom: -20.h,
                 left: 0.w,

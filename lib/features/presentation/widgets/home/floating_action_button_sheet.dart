@@ -16,11 +16,11 @@ class FloatingActionButtonSheet extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildActionIcon(
-            context,
-            image: AppAssets.post,
-            label: "Post",
-          ),
+          _buildActionIcon(context,
+              image: AppAssets.post,
+              label: "Post",
+              onTap: () =>
+                  Navigator.pushNamed(context, NavigationStrings.addPost)),
           _buildActionIcon(
             context,
             image: AppAssets.balloon,
@@ -37,18 +37,21 @@ class FloatingActionButtonSheet extends StatelessWidget {
   }
 
   Widget _buildActionIcon(BuildContext context,
-      {required String image, required String label}) {
+      {required String image, required String label, void Function()? onTap}) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          width: 60.w,
-          height: 60.h,
-          decoration: BoxDecoration(
-            color: AppColors.veryLightPink,
-            borderRadius: BorderRadius.circular(12),
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            width: 60.w,
+            height: 60.h,
+            decoration: BoxDecoration(
+              color: AppColors.veryLightPink,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Image.asset(image),
           ),
-          child: Image.asset(image),
         ),
         SizedBox(height: 8.h),
         Text(

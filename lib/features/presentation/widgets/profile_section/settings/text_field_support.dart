@@ -3,15 +3,19 @@ part of 'widgets_imports.dart';
 class TextFieldSupport extends StatelessWidget {
   final String hintText;
   final String labelText;
+  final int? maxLines;
   const TextFieldSupport(
-      {super.key, required this.hintText, required this.labelText});
+      {super.key,
+      required this.hintText,
+      required this.labelText,
+      this.maxLines = 7});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       child: TextFormField(
-        maxLines: 7,
+        maxLines: maxLines,
         decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: hintText,

@@ -13,6 +13,7 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -64,6 +65,7 @@ class SearchScreen extends StatelessWidget {
                                     imageUrl: isImagePost
                                         ? post.mediaUrls![0].url!
                                         : null,
+                                    postId: post.id,
                                   ),
                                 );
                               },

@@ -9,6 +9,13 @@
 .history
 .svn/
 migrate_working_dir/
+.dart_tool/
+.idea/
+.vscode/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
 
 # IntelliJ related
 *.iml
